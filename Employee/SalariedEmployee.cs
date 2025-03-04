@@ -8,10 +8,14 @@ namespace EmployeeExplorer.Employee
 {
     class SalariedEmployee : Employee, IBonusable
     {
-        public float Salary { get; set; }
-        public int ContractDurationMonths { get; set; }
-        public SalariedEmployee(string name, int age, string position, DateTime initDate) : base(name, age, position, initDate)
+        public float EmployeeSalary { get; set; }
+        public int EmployeeContractDurationMonths { get; set; }
+        public int EmployeeVacationDays { get; set; }
+        public SalariedEmployee(string name, int age, string position, DateTime initDate, float salary, int contractDurationMonths, int vacationDays) : base(name, age, position, initDate)
         {
+            EmployeeSalary = salary;
+            EmployeeContractDurationMonths = contractDurationMonths;
+            EmployeeVacationDays = vacationDays;
         }
 
         public int CalculateBonus(int objectivesAchieved, float pricePerObjective)
