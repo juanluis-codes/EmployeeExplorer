@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeExplorer.Employee
 {
-    class SalariedEmployee : Employee, IBonusable
+    class SalariedEmployee : Employee, IBonusable, IDismissable
     {
         public float EmployeeSalary { get; set; }
         public int EmployeeContractDurationMonths { get; set; }
@@ -21,6 +21,32 @@ namespace EmployeeExplorer.Employee
         public int CalculateBonus(int objectivesAchieved, float pricePerObjective)
         {
             throw new NotImplementedException();
+        }
+
+        public int FireEmployee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetEmployeeInfo()
+        {
+            if (!EmployeeStatus)
+            {
+                return "The employee status is not set";
+            }
+
+            var contractDuration = "";
+
+            if(EmployeeContractDurationMonths == -1)
+            {
+                contractDuration = "undetermined";
+            } else
+            {
+                contractDuration = Convert.ToString(EmployeeContractDurationMonths);
+            }
+
+                var info = String.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
+            return info;
         }
     }
 }
