@@ -8,6 +8,6 @@ namespace EmployeeExplorer.Employee
 {
     interface IBonusable
     {
-        int CalculateBonus(int objectivesAchieved, float pricePerObjective);
+        float CalculateBonus(int objectivesAchieved, float pricePerObjective);
     }
 }

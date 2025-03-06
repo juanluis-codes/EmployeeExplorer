@@ -18,14 +18,39 @@ namespace EmployeeExplorer.Employee
             EmployeeVacationDays = vacationDays;
         }
 
-        public int CalculateBonus(int objectivesAchieved, float pricePerObjective)
+        public float CalculateBonus(int objectivesAchieved, float pricePerObjective)
         {
-            throw new NotImplementedException();
+            if (objectivesAchieved >= 1)
+            {
+                float bonus = (objectivesAchieved * pricePerObjective) + (EmployeeSalary * 0.05F);
+                return bonus;
+            }
+
+            return 0.0F;
         }
 
-        public int FireEmployee()
+        public bool BookHolidays(DateTime firstDay, DateTime lastDay)
         {
-            throw new NotImplementedException();
+            if (firstDay.Year > DateTime.Now.Year | lastDay.Year > DateTime.Now.Year)
+            {
+                return false;
+            }
+
+            var days = (lastDay - firstDay).Days;
+
+            if(days > EmployeeVacationDays)
+            {
+                return false;
+            }
+
+            EmployeeVacationDays = EmployeeVacationDays - days;
+            return true;
+        }
+
+        public bool FireEmployee()
+        {
+            EmployeeStatus = false;
+            return EmployeeStatus;
         }
 
         public override string GetEmployeeInfo()
