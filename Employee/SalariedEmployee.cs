@@ -11,6 +11,7 @@ namespace EmployeeExplorer.Employee
         public float EmployeeSalary { get; set; }
         public int EmployeeContractDurationMonths { get; set; }
         public int EmployeeVacationDays { get; set; }
+        public List<string> VacationPeriods { get; set; }
         public SalariedEmployee(string name, int age, string position, DateTime initDate, float salary, int contractDurationMonths, int vacationDays) : base(name, age, position, initDate)
         {
             EmployeeSalary = salary;
@@ -31,6 +32,8 @@ namespace EmployeeExplorer.Employee
 
         public bool BookHolidays(DateTime firstDay, DateTime lastDay)
         {
+            firstDay = firstDay.Date;
+            lastDay = lastDay.Date;
             if (firstDay.Year > DateTime.Now.Year | lastDay.Year > DateTime.Now.Year)
             {
                 return false;
@@ -42,6 +45,34 @@ namespace EmployeeExplorer.Employee
             {
                 return false;
             }
+
+            string[] period;
+            DateTime firstDayPeriod;
+            DateTime lastDayPeriod;
+
+            foreach(string dateRange in VacationPeriods)
+            {
+                period = dateRange.Split("-");
+                firstDayPeriod = new DateTime(int.Parse(period[0].Split("/")[2]), int.Parse(period[0].Split("/")[1]), int.Parse(period[0].Split("/")[0]));
+                lastDayPeriod = new DateTime(int.Parse(period[1].Split("/")[2]), int.Parse(period[1].Split("/")[1]), int.Parse(period[1].Split("/")[0]));
+
+                if(firstDay >= firstDayPeriod && firstDay <= lastDayPeriod)
+                {
+                    return false;
+                }
+
+                if(lastDay >= firstDayPeriod && lastDay <= lastDayPeriod)
+                {
+                    return false;
+                }
+
+                if(firstDay <= firstDayPeriod && lastDay >= lastDayPeriod)
+                {
+                    return false;
+                }
+            }
+
+            var str = String.Format("{0}-{1}", firstDay, lastDay);
 
             EmployeeVacationDays = EmployeeVacationDays - days;
             return true;
