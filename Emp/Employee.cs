@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeExplorer.Employee
+namespace EmployeeExplorer.Emp
 {
     class Employee
     {
@@ -32,7 +32,7 @@ namespace EmployeeExplorer.Employee
                 return "The employee status is not set";
             }
 
-            var info = String.Format("Employee {0}, {1}. Contract for {2} started on {3}.", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate);
+            var info = string.Format("Employee {0}, {1}. Contract for {2} started on {3}.", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate);
             return info;
         }
     }

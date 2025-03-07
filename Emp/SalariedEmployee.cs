@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeExplorer.Employee
+namespace EmployeeExplorer.Emp
 {
     class SalariedEmployee : Employee, IBonusable, IDismissable
     {
@@ -23,7 +23,7 @@ namespace EmployeeExplorer.Employee
         {
             if (objectivesAchieved >= 1)
             {
-                float bonus = (objectivesAchieved * pricePerObjective) + (EmployeeSalary * 0.05F);
+                float bonus = objectivesAchieved * pricePerObjective + EmployeeSalary * 0.05F;
                 return bonus;
             }
 
@@ -72,7 +72,7 @@ namespace EmployeeExplorer.Employee
                 }
             }
 
-            var str = String.Format("{0}-{1}", firstDay, lastDay);
+            var str = string.Format("{0}-{1}", firstDay, lastDay);
 
             EmployeeVacationDays = EmployeeVacationDays - days;
             return true;
@@ -101,7 +101,7 @@ namespace EmployeeExplorer.Employee
                 contractDuration = Convert.ToString(EmployeeContractDurationMonths);
             }
 
-                var info = String.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
+                var info = string.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
             return info;
         }
     }
