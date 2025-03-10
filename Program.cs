@@ -48,4 +48,7 @@ while(cont)
     }
 }
 
-enterprise.GetEmployees();
+foreach (Employee emp in enterprise.GetEmployees())
+{
+    Console.WriteLine(emp);
+}
