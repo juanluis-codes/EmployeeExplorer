@@ -1,16 +1,19 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using EmployeeExplorer.Emp;
+using EmployeeExplorer.Enterprise;
 
-static void DisplayMenu()
+static void DisplayMenu(Enterprise enterprise)
 {
-    Console.WriteLine("Welcome to EmployeeManager2025:\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ");
+    Console.WriteLine(String.Format("Welcome to EmployeeManager2025 ({0}):\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ", enterprise.GetEnterpriseName));
 }
+
+Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
 while(cont)
 {
-    DisplayMenu();
+    DisplayMenu(enterprise);
     int choice = int.Parse(Console.ReadLine());
 
     switch (choice)

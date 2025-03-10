@@ -20,6 +20,16 @@ namespace EmployeeExplorer.Enterprise
             Employees = new List<Employee>();
         }
 
+        public string GetEnterpriseName()
+        {
+            return enterpriseName;
+        }
+
+        public DateTime GetEnterpriseFoundation()
+        {
+            return enterpriseFoundation;
+        }
+
         public bool FireEmployee(int employeeId)
         {
             Employees.Remove(Employees.Find(emp => emp.EmployeeId == employeeId));
