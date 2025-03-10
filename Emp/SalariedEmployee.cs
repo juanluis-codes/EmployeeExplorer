@@ -78,19 +78,8 @@ namespace EmployeeExplorer.Emp
             return true;
         }
 
-        public bool FireEmployee()
-        {
-            EmployeeStatus = false;
-            return EmployeeStatus;
-        }
-
         public override string GetEmployeeInfo()
         {
-            if (!EmployeeStatus)
-            {
-                return "The employee status is not set";
-            }
-
             var contractDuration = "";
 
             if(EmployeeContractDurationMonths == -1)
@@ -101,7 +90,7 @@ namespace EmployeeExplorer.Emp
                 contractDuration = Convert.ToString(EmployeeContractDurationMonths);
             }
 
-                var info = string.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
+            var info = string.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
             return info;
         }
     }

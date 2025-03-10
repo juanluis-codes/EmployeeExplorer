@@ -19,5 +19,7 @@ namespace EmployeeExplorer.Enterprise
             enterpriseFoundation = foundation;
             Employees = new List<Employee>();
         }
+
+        public 
     }
 }
