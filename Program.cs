@@ -2,6 +2,7 @@
 
 using EmployeeExplorer.Emp;
 using EmployeeExplorer.Enterprise;
+using System.ComponentModel;
 
 static void DisplayMenu(Enterprise enterprise)
 {
@@ -11,6 +12,8 @@ static void DisplayMenu(Enterprise enterprise)
 Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
+int vacationDays = 23;
+SalariedEmployee employee1;
 while(cont)
 {
     DisplayMenu(enterprise);
@@ -18,6 +21,26 @@ while(cont)
 
     switch (choice)
     {
+        case 1:
+            Console.Write("Employee type (Salaried, Hourly, Freelancer): ");
+            var employeeType = Console.ReadLine();
+            if(employeeType == "Salaried")
+            {
+                Console.Write("Name: ");
+                var name = Console.ReadLine();
+                Console.Write("Age: ");
+                var age = int.Parse(Console.ReadLine());
+                Console.Write("Position: ");
+                var position = Console.ReadLine();
+                Console.Write("Salary: ");
+                var salary = float.Parse(Console.ReadLine());
+                Console.Write("Contract duration: ");
+                var duration = int.Parse(Console.ReadLine());
+
+                employee1 = new SalariedEmployee(name, age, position, DateTime.Now, salary, duration, vacationDays);
+                enterprise;
+            }
+            break;
         case 6:
             cont = false;
             break;
@@ -26,7 +49,3 @@ while(cont)
             break;
     }
 }
-
-SalariedEmployee employee1 = new SalariedEmployee("Juan", 24, "Data Engineer", DateTime.Now, 1000.0F, -1, 23);
-Console.WriteLine("Hello, World!");
-Console.WriteLine(employee1.GetEmployeeInfo());
