@@ -89,6 +89,11 @@ namespace EmployeeExplorer.Emp
             return true;
         }
 
+        public override string ToString()
+        {
+            return GetEmployeeInfo();
+        }
+
         public override string GetEmployeeInfo()
         {
             if (!employeeStatus)

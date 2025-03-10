@@ -27,6 +27,10 @@ namespace EmployeeExplorer.Emp
             employeeStatus = true;
         }
 
+        public override string ToString() {
+            return GetEmployeeInfo();
+        }
+
         public virtual string GetEmployeeInfo()
         {
             if (!employeeStatus)

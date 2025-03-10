@@ -13,7 +13,6 @@ Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
 int vacationDays = 23;
-SalariedEmployee employee1;
 while(cont)
 {
     DisplayMenu(enterprise);
@@ -37,8 +36,7 @@ while(cont)
                 Console.Write("Contract duration: ");
                 var duration = int.Parse(Console.ReadLine());
 
-                employee1 = new SalariedEmployee(name, age, position, DateTime.Now, salary, duration, vacationDays);
-                enterprise;
+                enterprise.AddSalariedEmployee(name, age, position, salary, duration);
             }
             break;
         case 6:
