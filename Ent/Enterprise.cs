@@ -13,7 +13,7 @@ namespace EmployeeExplorer.Enterprise
         private readonly string enterpriseName;
         private readonly int vacations = 23;
         private readonly DateTime enterpriseFoundation;
-        protected List<Employee> Employees { get; set; }
+        private List<Employee> Employees { get; set; }
 
         public Enterprise(string name, DateTime foundation)
         {
@@ -30,6 +30,11 @@ namespace EmployeeExplorer.Enterprise
         public DateTime GetEnterpriseFoundation()
         {
             return enterpriseFoundation;
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            return Employees;
         }
 
         public bool FireEmployee(int employeeId)

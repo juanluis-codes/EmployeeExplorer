@@ -47,3 +47,5 @@ while(cont)
             break;
     }
 }
+
+enterprise.GetEmployees();
