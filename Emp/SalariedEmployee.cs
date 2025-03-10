@@ -17,10 +17,16 @@ namespace EmployeeExplorer.Emp
             EmployeeSalary = salary;
             EmployeeContractDurationMonths = contractDurationMonths;
             EmployeeVacationDays = vacationDays;
+            VacationPeriods = new List<string>();
         }
 
         public float CalculateBonus(int objectivesAchieved, float pricePerObjective)
         {
+            if (!employeeStatus)
+            {
+                return 0.0F;
+            }
+
             if (objectivesAchieved >= 1)
             {
                 float bonus = objectivesAchieved * pricePerObjective + EmployeeSalary * 0.05F;
@@ -32,6 +38,11 @@ namespace EmployeeExplorer.Emp
 
         public bool BookHolidays(DateTime firstDay, DateTime lastDay)
         {
+            if (!employeeStatus)
+            {
+                return false;
+            }
+
             firstDay = firstDay.Date;
             lastDay = lastDay.Date;
             if (firstDay.Year > DateTime.Now.Year | lastDay.Year > DateTime.Now.Year)
@@ -80,6 +91,11 @@ namespace EmployeeExplorer.Emp
 
         public override string GetEmployeeInfo()
         {
+            if (!employeeStatus)
+            {
+                return "Employee is no longer available";
+            }
+
             var contractDuration = "";
 
             if(EmployeeContractDurationMonths == -1)
@@ -92,6 +108,12 @@ namespace EmployeeExplorer.Emp
 
             var info = string.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
             return info;
+        }
+
+        public bool FireEmployee()
+        {
+            employeeStatus = false;
+            return !employeeStatus;
         }
     }
 }

@@ -20,6 +20,10 @@ namespace EmployeeExplorer.Enterprise
             Employees = new List<Employee>();
         }
 
-        public 
+        public bool FireEmployee(int employeeId)
+        {
+            Employees.Remove(Employees.Find(emp => emp.EmployeeId == employeeId));
+            return true;
+        }
     }
 }
