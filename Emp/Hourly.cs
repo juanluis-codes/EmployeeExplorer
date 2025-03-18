@@ -31,7 +31,7 @@ namespace EmployeeExplorer.Emp
                 return "Employee is no longer available";
             }
 
-            var info = string.Format("Hourly Employee {0}, {1}.\nContract for {2} started on {3}.\nActual paycheck of {4}€ ({5} hours, {6}€/h)", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, payment, Hours, PaymentPerHour);
+            var info = string.Format("Hourly Employee {0}, {1}.\nContract for {2} started on {3}.\nActual paycheck of {4} euros ({5} hours, {6} euros/h)", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, payment, Hours, PaymentPerHour);
             return info;
         }
 

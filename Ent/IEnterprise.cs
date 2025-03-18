@@ -10,7 +10,9 @@ namespace EmployeeExplorer.Ent
 {
     interface IEnterprise
     {
-        public bool AddSalariedEmployee(string name, int age, string position, float salary, int duration);
+        public SalariedEmployee AddSalariedEmployee(string name, int age, string position, float salary, int duration);
+        public Hourly AddHourlyEmployee(string name, int age, string position, float paymentHourly, int hours);
+        public Freelancer AddFreelancer(string name, int age, string position, float nextPayment, string project);
         public bool FireEmployee(int employeeId);
     }
 }

@@ -6,14 +6,14 @@ using System.ComponentModel;
 
 static void DisplayMenu(Enterprise enterprise)
 {
-    Console.WriteLine(String.Format("Welcome to EmployeeManager2025 ({0}):\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ", enterprise.GetEnterpriseName));
+    Console.Write(String.Format("\nWelcome to EmployeeManager2025 ({0}):\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ", enterprise.GetEnterpriseName()));
 }
 
 Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
 int vacationDays = 23;
-Employee emp;
+Employee employee;
 List<Employee> employees = new List<Employee>();
 
 while(cont)
@@ -24,7 +24,7 @@ while(cont)
     switch (choice)
     {
         case 1:
-            Console.Write("Employee type (Salaried, Hourly, Freelancer): ");
+            Console.Write("\nEmployee type (Salaried, Hourly, Freelancer): ");
             var employeeType = Console.ReadLine();
 
             Console.Write("Name: ");
@@ -38,11 +38,11 @@ while(cont)
             {
                 Console.Write("Salary: ");
                 var salary = float.Parse(Console.ReadLine());
-                Console.Write("Contract duration: ");
+                Console.Write("Contract duration (-1 for undefined): ");
                 var duration = int.Parse(Console.ReadLine());
 
-                emp = enterprise.AddSalariedEmployee(name, age, position, salary, duration);
-                employees.Add(emp);
+                employee = enterprise.AddSalariedEmployee(name, age, position, salary, duration);
+                employees.Add(employee);
             }
 
             if(employeeType == "Hourly")
@@ -52,8 +52,8 @@ while(cont)
                 Console.Write("Hours: ");
                 var hours = int.Parse(Console.ReadLine());
 
-                emp = enterprise.AddHourlyEmployee(name, age, position, paymentHourly, hours);
-                employees.Add(emp);
+                employee = enterprise.AddHourlyEmployee(name, age, position, paymentHourly, hours);
+                employees.Add(employee);
             }
 
             if(employeeType == "Freelancer")
@@ -63,8 +63,8 @@ while(cont)
                 Console.Write("Project: ");
                 var project = Console.ReadLine();
 
-                emp = enterprise.AddFreelancer(name, age, position, nextPayment, project);
-                employees.Add(emp);
+                employee = enterprise.AddFreelancer(name, age, position, nextPayment, project);
+                employees.Add(employee);
             }
 
             break;
@@ -79,5 +79,5 @@ while(cont)
 
 foreach (Employee emp in enterprise.GetEmployees())
 {
-    Console.WriteLine(emp);
+    Console.WriteLine("\n" + emp);
 }
