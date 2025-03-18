@@ -24,7 +24,7 @@ while(cont)
             Console.Write("Employee type (Salaried, Hourly, Freelancer): ");
             var employeeType = Console.ReadLine();
 
-            if(employeeType == "Salaried")
+            if (employeeType == "Salaried")
             {
                 Console.Write("Name: ");
                 var name = Console.ReadLine();
@@ -39,6 +39,16 @@ while(cont)
 
                 enterprise.AddSalariedEmployee(name, age, position, salary, duration);
             }
+            if(employeeType == "Hourly")
+            {
+
+            }
+
+            if(employeeType == "Freelancer")
+            {
+
+            }
+
             break;
         case 6:
             cont = false;

@@ -29,7 +29,7 @@ namespace EmployeeExplorer.Emp
                 return "Employee is no longer available";
             }
 
-            var info = string.Format("Freelancer {0}, {1}.\nContract for {2} started on {3}.\nThe next payment is {4}.\nCurrent project: {5}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, NextPayment, Project);
+            var info = string.Format("Freelancer {0}, {1}.\nContract for {2} started on {3}.\nThe next payment is {4}€.\nCurrent project: {5}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, NextPayment, Project);
             return info;
         }
     }
