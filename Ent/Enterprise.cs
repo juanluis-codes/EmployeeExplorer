@@ -39,6 +39,8 @@ namespace EmployeeExplorer.Enterprise
 
         public bool FireEmployee(int employeeId)
         {
+            Employee employee = Employees.Find(emp => emp.EmployeeId == employeeId);
+            float payment = employee.FireEmployee();
             Employees.Remove(Employees.Find(emp => emp.EmployeeId == employeeId));
             return true;
         }

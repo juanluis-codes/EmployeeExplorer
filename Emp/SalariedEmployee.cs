@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeExplorer.Emp
 {
-    class SalariedEmployee : Employee, IBonusable, IDismissable
+    class SalariedEmployee : Employee, IBonusable
     {
         public float EmployeeSalary { get; set; }
         public int EmployeeContractDurationMonths { get; set; }
@@ -113,12 +113,6 @@ namespace EmployeeExplorer.Emp
 
             var info = string.Format("Employee {0}, {1}.\nContract for {2} started on {3} and ends on {4}.\nThe salary is {5}.\nCurrent holiday days: {6}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, contractDuration, EmployeeSalary, EmployeeVacationDays);
             return info;
-        }
-
-        public bool FireEmployee()
-        {
-            employeeStatus = false;
-            return !employeeStatus;
         }
     }
 }

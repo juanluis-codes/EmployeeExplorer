@@ -8,6 +8,6 @@ namespace EmployeeExplorer.Emp
 {
     interface IDismissable
     {
-        public bool FireEmployee();
+        public float FireEmployee();
     }
 }

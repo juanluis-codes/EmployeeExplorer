@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeExplorer.Emp
 {
-    class Employee
+    class Employee: IDismissable
     {
         protected static int numberOfEmployees = 0;
         protected bool employeeStatus;
@@ -40,6 +40,12 @@ namespace EmployeeExplorer.Emp
 
             var info = string.Format("Employee {0}, {1}. Contract for {2} started on {3}.", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate);
             return info;
+        }
+
+        public float FireEmployee()
+        {
+            employeeStatus = false;
+            return 0.0F;
         }
     }
 }
