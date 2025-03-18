@@ -40,9 +40,14 @@ namespace EmployeeExplorer.Enterprise
         public bool FireEmployee(int employeeId)
         {
             Employee employee = Employees.Find(emp => emp.EmployeeId == employeeId);
-            float payment = employee.FireEmployee();
-            Employees.Remove(Employees.Find(emp => emp.EmployeeId == employeeId));
-            return true;
+
+            if (employee.FireEmployee())
+            {
+                Employees.Remove(employee);
+                return true;
+            }
+
+            return false;
         }
 
         public bool AddSalariedEmployee(string name, int age, string position, float salary, int duration)

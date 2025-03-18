@@ -42,10 +42,10 @@ namespace EmployeeExplorer.Emp
             return info;
         }
 
-        public float FireEmployee()
+        public bool FireEmployee()
         {
             employeeStatus = false;
-            return 0.0F;
+            return !employeeStatus;
         }
     }
 }

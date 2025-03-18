@@ -24,6 +24,11 @@ namespace EmployeeExplorer.Emp
 
         public override string GetEmployeeInfo()
         {
+            if (!employeeStatus)
+            {
+                return "Employee is no longer available";
+            }
+
             var info = string.Format("Freelancer {0}, {1}.\nContract for {2} started on {3}.\nThe next payment is {4}.\nCurrent project: {5}", EmployeeName, EmployeeAge, EmployeePosition, EmployeeInitDate, NextPayment, Project);
             return info;
         }
