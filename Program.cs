@@ -23,6 +23,7 @@ while(cont)
         case 1:
             Console.Write("Employee type (Salaried, Hourly, Freelancer): ");
             var employeeType = Console.ReadLine();
+
             if(employeeType == "Salaried")
             {
                 Console.Write("Name: ");
