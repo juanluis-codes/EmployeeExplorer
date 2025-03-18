@@ -13,6 +13,9 @@ Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
 int vacationDays = 23;
+Employee emp;
+List<Employee> employees = new List<Employee>();
+
 while(cont)
 {
     DisplayMenu(enterprise);
@@ -24,29 +27,44 @@ while(cont)
             Console.Write("Employee type (Salaried, Hourly, Freelancer): ");
             var employeeType = Console.ReadLine();
 
+            Console.Write("Name: ");
+            var name = Console.ReadLine();
+            Console.Write("Age: ");
+            var age = int.Parse(Console.ReadLine());
+            Console.Write("Position: ");
+            var position = Console.ReadLine();
+
             if (employeeType == "Salaried")
             {
-                Console.Write("Name: ");
-                var name = Console.ReadLine();
-                Console.Write("Age: ");
-                var age = int.Parse(Console.ReadLine());
-                Console.Write("Position: ");
-                var position = Console.ReadLine();
                 Console.Write("Salary: ");
                 var salary = float.Parse(Console.ReadLine());
                 Console.Write("Contract duration: ");
                 var duration = int.Parse(Console.ReadLine());
 
-                enterprise.AddSalariedEmployee(name, age, position, salary, duration);
+                emp = enterprise.AddSalariedEmployee(name, age, position, salary, duration);
+                employees.Add(emp);
             }
+
             if(employeeType == "Hourly")
             {
+                Console.Write("Payment per hour: ");
+                var paymentHourly = float.Parse(Console.ReadLine());
+                Console.Write("Hours: ");
+                var hours = int.Parse(Console.ReadLine());
 
+                emp = enterprise.AddHourlyEmployee(name, age, position, paymentHourly, hours);
+                employees.Add(emp);
             }
 
             if(employeeType == "Freelancer")
             {
+                Console.Write("Payment: ");
+                var nextPayment = float.Parse(Console.ReadLine());
+                Console.Write("Project: ");
+                var project = Console.ReadLine();
 
+                emp = enterprise.AddFreelancer(name, age, position, nextPayment, project);
+                employees.Add(emp);
             }
 
             break;

@@ -50,11 +50,25 @@ namespace EmployeeExplorer.Enterprise
             return false;
         }
 
-        public bool AddSalariedEmployee(string name, int age, string position, float salary, int duration)
+        public SalariedEmployee AddSalariedEmployee(string name, int age, string position, float salary, int duration)
         {
             var employee = new SalariedEmployee(name, age, position, DateTime.Now, salary, duration, vacations);
             Employees.Add(employee);
-            return true;
+            return employee;
+        }
+
+        public Hourly AddHourlyEmployee(string name, int age, string position, float paymentHourly, int hours)
+        {
+            var employee = new Hourly(name, age, position, DateTime.Now, paymentHourly, hours);
+            Employees.Add(employee);
+            return employee;
+        }
+
+        public Freelancer AddFreelancer(string name, int age, string position, float nextPayment, string project)
+        {
+            var employee = new Freelancer(name, age, position, DateTime.Now, nextPayment, project);
+            Employees.Add(employee);
+            return employee;
         }
     }
 }
