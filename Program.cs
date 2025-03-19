@@ -13,6 +13,7 @@ Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
 int vacationDays = 23;
+
 Employee employee;
 List<Employee> employees = new List<Employee>();
 
@@ -21,12 +22,12 @@ while(cont)
     DisplayMenu(enterprise);
     int choice = int.Parse(Console.ReadLine());
 
+    Console.Write("\nEmployee type (Salaried, Hourly, Freelancer): ");
+    var employeeType = Console.ReadLine();
+
     switch (choice)
     {
         case 1:
-            Console.Write("\nEmployee type (Salaried, Hourly, Freelancer): ");
-            var employeeType = Console.ReadLine();
-
             Console.Write("Name: ");
             var name = Console.ReadLine();
             Console.Write("Age: ");
@@ -68,6 +69,27 @@ while(cont)
             }
 
             break;
+        case 2:
+            if(employeeType != "Salaried")
+            {
+                Console.WriteLine("Only Salaried Employees can register vacations");
+                break;
+            }
+            else
+            {
+                Console.Write("Employee Id: ");
+                var empId = int.Parse(Console.ReadLine());
+                Console.Write("Init date: ");
+                var initDate = DateTime.Parse(Console.ReadLine());
+
+                Console.Write("End date: ");
+                var endDate = DateTime.Parse(Console.ReadLine());
+
+                SalariedEmployee emp = (SalariedEmployee)employees.Find(emp => emp.EmployeeId == empId);
+                emp.BookHolidays();
+
+            }
+            break;
         case 6:
             cont = false;
             break;
@@ -80,4 +102,9 @@ while(cont)
 foreach (Employee emp in enterprise.GetEmployees())
 {
     Console.WriteLine("\n" + emp);
+
+    if(emp.GetType() == typeof(SalariedEmployee))
+    {
+        Console.WriteLine(((SalariedEmployee)emp).VacationPeriods);
+    }
 }

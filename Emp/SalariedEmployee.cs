@@ -86,6 +86,7 @@ namespace EmployeeExplorer.Emp
             var str = string.Format("{0}-{1}", firstDay, lastDay);
 
             EmployeeVacationDays = EmployeeVacationDays - days;
+            VacationPeriods.Add(str);
             return true;
         }
 
