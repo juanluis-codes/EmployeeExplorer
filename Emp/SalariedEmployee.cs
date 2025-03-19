@@ -43,14 +43,25 @@ namespace EmployeeExplorer.Emp
                 return false;
             }
 
-            firstDay = firstDay.Date;
-            lastDay = lastDay.Date;
+            firstDay = firstDay;
+            lastDay = lastDay;
+
+            if (firstDay > lastDay)
+            {
+                return false;
+            }
+
             if (firstDay.Year > DateTime.Now.Year | lastDay.Year > DateTime.Now.Year)
             {
                 return false;
             }
 
-            var days = (lastDay - firstDay).Days;
+            if (firstDay < DateTime.Now.Date)
+            {
+                return false;
+            }
+
+            var days = (lastDay - firstDay).Days + 1;
 
             if(days > EmployeeVacationDays)
             {
@@ -64,8 +75,8 @@ namespace EmployeeExplorer.Emp
             foreach(string dateRange in VacationPeriods)
             {
                 period = dateRange.Split("-");
-                firstDayPeriod = new DateTime(int.Parse(period[0].Split("/")[2]), int.Parse(period[0].Split("/")[1]), int.Parse(period[0].Split("/")[0]));
-                lastDayPeriod = new DateTime(int.Parse(period[1].Split("/")[2]), int.Parse(period[1].Split("/")[1]), int.Parse(period[1].Split("/")[0]));
+                firstDayPeriod = new DateTime(int.Parse(period[0].Split("/")[2]), int.Parse(period[0].Split("/")[1]), int.Parse(period[0].Split("/")[0])).Date;
+                lastDayPeriod = new DateTime(int.Parse(period[1].Split("/")[2]), int.Parse(period[1].Split("/")[1]), int.Parse(period[1].Split("/")[0])).Date;
 
                 if(firstDay >= firstDayPeriod && firstDay <= lastDayPeriod)
                 {
@@ -83,7 +94,7 @@ namespace EmployeeExplorer.Emp
                 }
             }
 
-            var str = string.Format("{0}-{1}", firstDay, lastDay);
+            var str = string.Format("{0}-{1}", firstDay.ToShortDateString(), lastDay.ToShortDateString());
 
             EmployeeVacationDays = EmployeeVacationDays - days;
             VacationPeriods.Add(str);

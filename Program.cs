@@ -22,12 +22,11 @@ while(cont)
     DisplayMenu(enterprise);
     int choice = int.Parse(Console.ReadLine());
 
-    Console.Write("\nEmployee type (Salaried, Hourly, Freelancer): ");
-    var employeeType = Console.ReadLine();
-
     switch (choice)
     {
         case 1:
+            Console.Write("\nEmployee type (Salaried, Hourly, Freelancer): ");
+            var employeeType = Console.ReadLine();
             Console.Write("Name: ");
             var name = Console.ReadLine();
             Console.Write("Age: ");
@@ -46,7 +45,7 @@ while(cont)
                 employees.Add(employee);
             }
 
-            if(employeeType == "Hourly")
+            if (employeeType == "Hourly")
             {
                 Console.Write("Payment per hour: ");
                 var paymentHourly = float.Parse(Console.ReadLine());
@@ -57,7 +56,7 @@ while(cont)
                 employees.Add(employee);
             }
 
-            if(employeeType == "Freelancer")
+            if (employeeType == "Freelancer")
             {
                 Console.Write("Payment: ");
                 var nextPayment = float.Parse(Console.ReadLine());
@@ -70,26 +69,32 @@ while(cont)
 
             break;
         case 2:
-            if(employeeType != "Salaried")
+            Console.Write("Employee Id: ");
+            var empId = int.Parse(Console.ReadLine());
+            SalariedEmployee emp = (SalariedEmployee)employees.Find(emp => emp.EmployeeId == empId);
+
+            if (emp.GetType() != typeof(SalariedEmployee))
             {
                 Console.WriteLine("Only Salaried Employees can register vacations");
                 break;
             }
+
+            Console.Write("Init date: ");
+            var initDate = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("End date: ");
+            var endDate = DateTime.Parse(Console.ReadLine());
+
+            if (emp.BookHolidays(initDate, endDate))
+            {
+                Console.WriteLine("Vacations registered");
+            }
             else
             {
-                Console.Write("Employee Id: ");
-                var empId = int.Parse(Console.ReadLine());
-                Console.Write("Init date: ");
-                var initDate = DateTime.Parse(Console.ReadLine());
-
-                Console.Write("End date: ");
-                var endDate = DateTime.Parse(Console.ReadLine());
-
-                SalariedEmployee emp = (SalariedEmployee)employees.Find(emp => emp.EmployeeId == empId);
-                emp.BookHolidays();
-
+                Console.WriteLine("Vacations not registered");
             }
-            break;
+
+                break;
         case 6:
             cont = false;
             break;
@@ -105,6 +110,9 @@ foreach (Employee emp in enterprise.GetEmployees())
 
     if(emp.GetType() == typeof(SalariedEmployee))
     {
-        Console.WriteLine(((SalariedEmployee)emp).VacationPeriods);
+        foreach (string period in ((SalariedEmployee)emp).VacationPeriods)
+        {
+            Console.WriteLine(period);
+        }
     }
 }
