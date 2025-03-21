@@ -9,7 +9,7 @@ static void DisplayMenu(Enterprise enterprise)
     Console.Write(String.Format("\nWelcome to EmployeeManager2025 ({0}):\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ", enterprise.GetEnterpriseName()));
 }
 
-static int GetEmployeeId(List<Employee> employees)
+static int GetEmployeeId()
 {
     Console.Write("Employee Id: ");
     return int.Parse(Console.ReadLine());
@@ -22,6 +22,7 @@ int vacationDays = 23;
 
 Employee employee;
 List<Employee> employees = new List<Employee>();
+int empId;
 
 while(cont)
 {
@@ -75,11 +76,10 @@ while(cont)
 
             break;
         case 2:
-            Console.Write("Employee Id: ");
-            var empId = int.Parse(Console.ReadLine());
-            SalariedEmployee emp = (SalariedEmployee)employees.Find(emp => emp.EmployeeId == empId);
+            empId = GetEmployeeId();
+            SalariedEmployee emp1 = (SalariedEmployee)employees.Find(emp => emp.EmployeeId == empId);
 
-            if (emp.GetType() != typeof(SalariedEmployee))
+            if (emp1.GetType() != typeof(SalariedEmployee))
             {
                 Console.WriteLine("Only Salaried Employees can register vacations");
                 break;
@@ -91,7 +91,7 @@ while(cont)
             Console.Write("End date: ");
             var endDate = DateTime.Parse(Console.ReadLine());
 
-            if (emp.BookHolidays(initDate, endDate))
+            if (emp1.BookHolidays(initDate, endDate))
             {
                 Console.WriteLine("Vacations registered");
             }
@@ -102,6 +102,22 @@ while(cont)
 
             break;
         case 3:
+            empId = GetEmployeeId();
+            IBonusable emp2 = (IBonusable)employees.Find(emp => emp.EmployeeId == empId);
+
+            if(emp2.GetType() == typeof(Hourly) || emp2.GetType() == typeof(SalariedEmployee))
+            {
+                Console.WriteLine("Objectives achieved: ");
+                int obj = int.Parse(Console.ReadLine());
+                Console.WriteLine("Price per objective: ");
+                float price = float.Parse(Console.ReadLine());
+
+                Console.WriteLine("Bonus: " + emp2.CalculateBonus(obj, price));
+            }
+            
+            Console.WriteLine("Employee not eligible for bonus");
+
+
             break;
         case 4:
             break;
