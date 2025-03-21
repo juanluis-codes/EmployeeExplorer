@@ -12,7 +12,7 @@ namespace EmployeeExplorer.Emp
         public int EmployeeContractDurationMonths { get; set; }
         public int EmployeeVacationDays { get; set; }
         public List<string> VacationPeriods { get; set; }
-        public SalariedEmployee(string name, int age, string position, DateTime initDate, float salary, int contractDurationMonths, int vacationDays) : base(name, age, position, initDate)
+        public SalariedEmployee(string name, int age, string position, string enterpriseName, DateTime initDate, float salary, int contractDurationMonths, int vacationDays) : base(name, age, position, enterpriseName, initDate)
         {
             EmployeeSalary = salary;
             EmployeeContractDurationMonths = contractDurationMonths;

@@ -12,7 +12,7 @@ namespace EmployeeExplorer.Emp
         public int Hours { get; set; }
         public float PaymentPerHour{ get; set; }
 
-        public Hourly(string name, int age, string position, DateTime initDate, float paymentHourly, int hours) : base(name, age, position, initDate)
+        public Hourly(string name, int age, string position, string enterpriseName, DateTime initDate, float paymentHourly, int hours) : base(name, age, position, enterpriseName, initDate)
         {
             PaymentPerHour = paymentHourly;
             Hours = hours;

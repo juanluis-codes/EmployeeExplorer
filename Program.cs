@@ -9,6 +9,12 @@ static void DisplayMenu(Enterprise enterprise)
     Console.Write(String.Format("\nWelcome to EmployeeManager2025 ({0}):\n 1. Add a employee\n 2. Register vacations\n 3. Calculate bonus\n 4. Get Employee info\n 5. Fire Employee\n 6. Exit\nType a number: ", enterprise.GetEnterpriseName()));
 }
 
+static int GetEmployeeId(List<Employee> employees)
+{
+    Console.Write("Employee Id: ");
+    return int.Parse(Console.ReadLine());
+}
+
 Enterprise enterprise = new Enterprise("Enterprise 1", DateTime.Now);
 
 bool cont = true;
@@ -41,7 +47,7 @@ while(cont)
                 Console.Write("Contract duration (-1 for undefined): ");
                 var duration = int.Parse(Console.ReadLine());
 
-                employee = enterprise.AddSalariedEmployee(name, age, position, salary, duration);
+                employee = enterprise.AddSalariedEmployee(name, age, position, enterprise.GetEnterpriseName(), salary, duration);
                 employees.Add(employee);
             }
 
@@ -52,7 +58,7 @@ while(cont)
                 Console.Write("Hours: ");
                 var hours = int.Parse(Console.ReadLine());
 
-                employee = enterprise.AddHourlyEmployee(name, age, position, paymentHourly, hours);
+                employee = enterprise.AddHourlyEmployee(name, age, position, enterprise.GetEnterpriseName(), paymentHourly, hours);
                 employees.Add(employee);
             }
 
@@ -63,7 +69,7 @@ while(cont)
                 Console.Write("Project: ");
                 var project = Console.ReadLine();
 
-                employee = enterprise.AddFreelancer(name, age, position, nextPayment, project);
+                employee = enterprise.AddFreelancer(name, age, position, enterprise.GetEnterpriseName(), nextPayment, project);
                 employees.Add(employee);
             }
 
@@ -94,7 +100,13 @@ while(cont)
                 Console.WriteLine("Vacations not registered");
             }
 
-                break;
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
         case 6:
             cont = false;
             break;

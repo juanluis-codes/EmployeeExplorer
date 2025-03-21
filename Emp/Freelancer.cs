@@ -11,7 +11,7 @@ namespace EmployeeExplorer.Emp
         public float NextPayment { get; set; }
         public string Project { get; set; }
 
-        public Freelancer(string name, int age, string position, DateTime initDate, float nextPayment, string project): base(name, age, position, initDate)
+        public Freelancer(string name, int age, string position, string enterpriseName, DateTime initDate, float nextPayment, string project): base(name, age, position, enterpriseName, initDate)
         {
             NextPayment = nextPayment;
             Project = project;
