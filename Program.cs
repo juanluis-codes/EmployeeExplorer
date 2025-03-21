@@ -120,6 +120,9 @@ while(cont)
 
             break;
         case 4:
+            empId = GetEmployeeId();
+            Employee emp3 = employees.Find(emp => emp.EmployeeId == empId);
+            Console.WriteLine(emp3);
             break;
         case 5:
             break;
