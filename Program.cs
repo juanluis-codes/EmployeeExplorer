@@ -11,7 +11,7 @@ static void DisplayMenu(Enterprise enterprise)
 
 static int GetEmployeeId()
 {
-    Console.Write("Employee Id: ");
+    Console.Write("\nEmployee Id: ");
     return int.Parse(Console.ReadLine());
 }
 
@@ -107,24 +107,36 @@ while(cont)
 
             if(emp2.GetType() == typeof(Hourly) || emp2.GetType() == typeof(SalariedEmployee))
             {
-                Console.WriteLine("Objectives achieved: ");
+                Console.Write("Objectives achieved: ");
                 int obj = int.Parse(Console.ReadLine());
-                Console.WriteLine("Price per objective: ");
+                Console.Write("Price per objective: ");
                 float price = float.Parse(Console.ReadLine());
 
-                Console.WriteLine("Bonus: " + emp2.CalculateBonus(obj, price));
+                Console.WriteLine("\nBonus: " + emp2.CalculateBonus(obj, price));
             }
-            
-            Console.WriteLine("Employee not eligible for bonus");
-
+            else
+            {
+                Console.WriteLine("\nEmployee not eligible for bonus");
+            }
 
             break;
         case 4:
             empId = GetEmployeeId();
             Employee emp3 = employees.Find(emp => emp.EmployeeId == empId);
-            Console.WriteLine(emp3);
+            Console.WriteLine("\n" + emp3);
             break;
         case 5:
+            empId = GetEmployeeId();
+
+            if (enterprise.FireEmployee(empId))
+            {
+                Console.WriteLine("\nEmployee fired");
+            }
+            else
+            {
+                Console.WriteLine("\nEmployee not found");
+            }
+
             break;
         case 6:
             cont = false;
